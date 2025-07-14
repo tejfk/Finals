@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Exam</title>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E91E63'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 overflow-hidden">
+
+    <!-- PHASE 1: WHISPERED WORD LOCK -->
+    <main id="lock-page" class="relative w-full h-screen"></main>
+
+    <!-- STARDUST TRANSITION OVERLAY -->
+    <div id="stardust-transition" class="fixed inset-0 z-50 pointer-events-none hidden">
+        <canvas id="stardust-canvas"></canvas>
+    </div>
+
+    <!-- PHASE 2: THE HIDDEN MEMORY GALLERY -->
+    <main id="hidden-gallery" class="hidden min-h-screen w-full relative overflow-y-auto">
+        <canvas id="fireflies-canvas"></canvas>
+        <audio id="background-music" loop>
+            <source src="./someday.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="relative z-20 container mx-auto p-6 md:p-12 text-center">
+            <button id="music-toggle" class="fixed top-5 right-5 z-50 bg-white/70 backdrop-blur-sm text-rose-500 p-3 rounded-full shadow-lg hover:bg-rose-100 transition">
+                <svg id="music-on-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.88 5.88a15 15 0 012.388-2.388M18.12 18.12a15 15 0 01-2.388 2.388M9 12l6 4V8l-6 4z"/></svg>
+                <svg id="music-off-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
+            </button>
+            
+            <h1 id="main-title" class="font-serif-display text-5xl md:text-7xl font-bold text-rose-800 mb-4 reveal-item" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">Our Story</h1>
+            
+            <section id="timeline-section" class="my-24 reveal-item"></section>
+            
+            <h2 id="gallery-heading" class="font-serif-display text-4xl text-purple-300 mb-24 reveal-item">Moments We'll Never Forget</h2>
+            
+            <!-- ⭐ UPDATED: Reverted to the wrapping gallery layout -->
+            <div id="clothesline" class="reveal-item"></div>
+            <div id="gallery-container" class="flex flex-wrap justify-center items-start gap-8 md:gap-12 px-4 mb-24">
+                <!-- Polaroid items will be injected and revealed by JavaScript -->
+            </div>
+            
+            <button id="open-letter-btn" class="special-button reveal-item">And One Last Thing...</button>
+        </div>
+    </main>
+
+    <!-- Interactive Letter Modal -->
+    <div id="letter-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
+        <div id="letter-modal-content" class="relative z-10 w-full max-w-lg transform transition-transform duration-300 scale-95"></div>
+        <button id="close-letter-btn" class="absolute top-4 right-4 text-white text-4xl hover:text-purple-300 transition">×</button>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>
