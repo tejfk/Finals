@@ -12,34 +12,38 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 .reveal-item{opacity:0;transition:opacity 1.5s ease-in-out}.reveal-item.is-visible{opacity:1}
 #stardust-canvas{position:absolute;top:0;left:0;width:100%;height:100%}
 
+/* --- ⭐ NEW: Style to hide the input field --- */
+#hidden-input {
+    position: absolute;
+    top: -100px; /* Position it off-screen */
+    left: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none; /* Make sure it can't be interacted with directly */
+}
+
 /* --- Responsive Timeline --- */
 .timeline-container{position:relative;max-width:600px;margin:auto}.timeline-container::after{content:'';position:absolute;width:4px;background-color:rgba(255,255,255,.2);top:0;bottom:0;left:50%;margin-left:-2px}.timeline-item{padding:10px 40px;position:relative;width:50%;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.timeline-item.is-visible{opacity:1;transform:translateY(0)}.timeline-left{left:0}.timeline-right{left:50%}.timeline-item::after{content:'♥';position:absolute;width:25px;height:25px;right:-14px;background-color:rgba(255,255,255,.8);color:#c084fc;font-size:14px;top:15px;border-radius:50%;z-index:1;text-align:center;line-height:25px}.timeline-right::after{left:-11px}.timeline-content{padding:20px;background:rgba(255,255,255,.05);border-radius:6px;text-align:left}
 #timeline-next{background:#c084fc;color:white;padding:10px 20px;border-radius:50px;font-weight:700;margin-top:2rem;transition:all .3s;box-shadow:0 4px 15px rgba(192,132,252,.4)}#timeline-next:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(192,132,252,.6)}
 @media screen and (max-width: 767px) {.timeline-container::after{left:31px}.timeline-item{width:100%;padding-left:70px;padding-right:25px}.timeline-left,.timeline-right{left:0}.timeline-left::after,.timeline-right::after{left:18px}}
 
-/* --- ⭐ UPDATED: Wrapping Polaroid Gallery --- */
+/* --- Wrapping Polaroid Gallery --- */
 #clothesline { width: 95%; height: 3px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent); margin: 0 auto 5rem auto; }
 .polaroid{position:relative;width:180px;height:240px;cursor:pointer;perspective:1000px;transform-origin:top center;opacity:0;transform:translateY(20px);transition:opacity 1s ease,transform 1s ease}
 @media (min-width:640px){.polaroid{width:200px;height:260px}}@media (min-width:1024px){.polaroid{width:220px;height:280px}}
 .polaroid.is-visible{opacity:1;transform:translateY(0)}.polaroid-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.175,.885,.32,1.275)}.polaroid.is-flipped .polaroid-inner{transform:rotateY(180deg)}.polaroid-front,.polaroid-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;background-color:#fdfdfd;padding:1rem;border-radius:4px;box-shadow:0 4px 8px rgba(0,0,0,.1),0 10px 20px rgba(0,0,0,.1)}.polaroid-front img,.polaroid-front video{width:100%;height:100%;padding-bottom:3.5rem;box-sizing:border-box;object-fit:cover;background-color:#000}.polaroid-back{transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;color:#444}.polaroid::before{content:'';position:absolute;top:-5rem;left:50%;transform:translateX(-50%);width:2px;height:5rem;background-color:#c9b7b7}
 @keyframes sway{0%{transform:rotate(1deg)}50%{transform:rotate(-1.5deg)}100%{transform:rotate(1deg)}}.sway-animation{animation:sway 5s ease-in-out infinite alternate}
 
-/* --- ⭐ UPDATED: Scrollable Letter Modal --- */
+/* --- Scrollable Letter Modal --- */
 .special-button{background:transparent;border:2px solid #c084fc;color:#c084fc;font-family:'Playfair Display',serif;font-size:1.25rem;padding:.75rem 2rem;border-radius:50px;transition:all .3s ease}.special-button:hover{background:#c084fc;color:white;transform:scale(1.05)}
 #letter-modal.is-visible{opacity:1}
 #letter-modal.is-visible #letter-modal-content{transform:scale(1)}
-
-/* This is the key part for the scrollable modal */
-#letter-modal-content {
-    max-height: 85vh; /* Ensure modal is never taller than 85% of the screen */
-    overflow-y: auto; /* Add a scrollbar only when content overflows */
-}
-/* Style the scrollbar to match the theme */
+#letter-modal-content { max-height: 85vh; overflow-y: auto; }
 #letter-modal-content::-webkit-scrollbar { width: 8px; }
 #letter-modal-content::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
 #letter-modal-content::-webkit-scrollbar-thumb { background-color: rgba(192, 132, 252, 0.4); border-radius: 4px; }
 #letter-modal-content::-webkit-scrollbar-thumb:hover { background-color: rgba(192, 132, 252, 0.6); }
-
 .letter-container{background:rgba(255,255,255,.05);padding:1.5rem;border-radius:8px;border:1px solid rgba(255,255,255,.1);text-align:center;cursor:pointer;user-select:none;transition:filter .8s ease-out}
 @media (min-width:768px){.letter-container{padding:2.5rem 3rem}}
 .letter-container.is-blurred{filter:blur(8px);-webkit-filter:blur(8px)}.letter-container .letter-line{opacity:0;transition:opacity .8s ease;display:block}.letter-container.is-revealing .letter-line{opacity:1}.letter-prompt{position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-style:italic;transition:opacity .5s}
