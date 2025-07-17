@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===       CUSTOMIZE HERE        ===
     // ===================================
 
-    // ⭐ CORRECTED: The secret word is now lowercase to match the check.
     const secretWord = 'meribaby';
 
     const timelineData = [
@@ -15,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { date: "Today", event: "And now, our love story turns a new page — writing our chapter together, officially and endlessly." }
     ];
 
+    // ⭐ This section correctly uses .jpeg. Please double-check your file and folder names.
     const galleryData = [
         { type: 'image', image: './assets/img/img6.jpeg', note: "klaro kayng ibog kay atek2 picture." },
         { type: 'image', image: './assets/img/img1.jpeg', note: "samot klaro kay gipa ila2." },
