@@ -16,18 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const galleryData = [
-        { type: 'image', image: './assets/img/img6.jpg', note: "klaro kayng ibog kay atek2 picture." },
-        { type: 'image', image: './assets/img/img1.jpg', note: "samot klaro kay gipa ila2." },
+        { type: 'image', image: './assets/img/img6.jpeg', note: "klaro kayng ibog kay atek2 picture." },
+        { type: 'image', image: './assets/img/img1.jpeg', note: "samot klaro kay gipa ila2." },
         { type: 'video', video: './assets/video/vid1.mp4', note: "bahay lambingan." },
-        { type: 'image', image: './assets/img/img2.jpg', note: "with Bob." },
-        { type: 'image', image: './assets/img/img3.jpg', note: "Cozy dates." },
+        { type: 'image', image: './assets/img/img2.jpeg', note: "with Bob." },
+        { type: 'image', image: './assets/img/img3.jpeg', note: "Cozy dates." },
         { type: 'video', video: './assets/video/vid2.mp4', note: "Pawns and cuddles" },
-        { type: 'image', image: './assets/img/img4.jpg', note: "Sunod2 outfit." },
-        { type: 'image', image: './assets/img/img5.jpg', note: "abi nko bayot ka ari." },
+        { type: 'image', image: './assets/img/img4.jpeg', note: "Sunod2 outfit." },
+        { type: 'image', image: './assets/img/img5.jpeg', note: "abi nko bayot ka ari." },
         { type: 'video', video: './assets/video/vid3.mp4', note: "Bahay lambingan part 2." },
-        { type: 'image', image: './assets/img/img7.jpg', note: "Merilin bayot." },
+        { type: 'image', image: './assets/img/img7.jpeg', note: "Merilin bayot." },
         { type: 'video', video: './assets/video/vid4.mp4', note: "Live in typa shi." },
-        { type: 'image', image: './assets/img/img8.jpg', note: "goofy ass b." },
+        { type: 'image', image: './assets/img/img8.jpeg', note: "goofy ass b." },
     ];
     
     const loveLetter = {
