@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===       CUSTOMIZE HERE        ===
     // ===================================
 
-    const secretWord = "MeriBaby";
+    const secretWord = 'MeriBaby';
 
     const timelineData = [
       { date: "March 13, 2025", event: "It all began with a simple cup of coffee — and in that moment, my heart found its reason to smile." },
