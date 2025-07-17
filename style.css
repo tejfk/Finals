@@ -12,15 +12,19 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 .reveal-item{opacity:0;transition:opacity 1.5s ease-in-out}.reveal-item.is-visible{opacity:1}
 #stardust-canvas{position:absolute;top:0;left:0;width:100%;height:100%}
 
-/* --- ⭐ NEW: Style to hide the input field --- */
+/* --- ⭐ UPDATED: Style to make the input a fullscreen transparent layer --- */
 #hidden-input {
     position: absolute;
-    top: -100px; /* Position it off-screen */
+    top: 0;
     left: 0;
-    width: 1px;
-    height: 1px;
+    width: 100%;
+    height: 100%;
     opacity: 0;
-    pointer-events: none; /* Make sure it can't be interacted with directly */
+    border: none;
+    background: transparent;
+    color: transparent; /* Hides text selection/cursor on some devices */
+    caret-color: transparent; /* Modern way to hide the blinking cursor */
+    z-index: 10; /* Ensures it's on top of background but below instructions */
 }
 
 /* --- Responsive Timeline --- */
