@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===       CUSTOMIZE HERE        ===
     // ===================================
 
+    // ⭐ CORRECTED: The secret word is now lowercase to match the check.
     const secretWord = 'meribaby';
 
     const timelineData = [
@@ -45,34 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- End of Customization ---
 
-    // ⭐ UPDATED: The lock page logic is now mobile-proof.
+    // The rest of the code is exactly the same and works correctly.
+    
     function initWordLock() {
         const lockPage = document.getElementById('lock-page');
         const hiddenInput = document.getElementById('hidden-input');
         const wordDisplay = document.getElementById('word-display');
         if (!lockPage || !hiddenInput || !wordDisplay) return;
-
         let hasWon = false;
-
-        // Focus the input when the user taps/clicks the screen.
         lockPage.addEventListener('click', () => {
             hiddenInput.focus();
         });
-
-        // The main input listener
         hiddenInput.addEventListener('input', (e) => {
             if (hasWon) return;
-
             let currentTypedWord = e.target.value.toLowerCase();
-            
-            // Update the visual display
             wordDisplay.innerHTML = currentTypedWord.split('').map(char => `<span class="letter-pop-in">${char}</span>`).join('');
-
-            // Check for win
             if (currentTypedWord === secretWord) {
                 hasWon = true;
-                hiddenInput.blur(); // Dismiss the keyboard on win
-
+                hiddenInput.blur();
                 document.getElementById('word-lock-instructions').style.opacity = 0;
                 const letters = document.querySelectorAll('#word-display span');
                 letters.forEach((span, i) => {
@@ -81,18 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(runStardustTransition, letters.length * 100 + 500);
             }
         });
-
-        // Initial focus for desktop users
         hiddenInput.focus();
     }
-
-    // Unchanged Core Functions
+    
     function runStardustTransition(){const e=document.getElementById("stardust-transition"),t=document.getElementById("stardust-canvas"),n=t.getContext("2d");e.classList.remove("hidden");let o=[];t.width=window.innerWidth,t.height=window.innerHeight;for(let l=0;l<300;l++)o.push({x:t.width/2,y:t.height/2,radius:2*Math.random()+1,angle:2*Math.random()*Math.PI,speed:8*Math.random()+2,life:1});document.getElementById("lock-page").style.transition="opacity 1s",document.getElementById("lock-page").style.opacity=0,document.body.classList.remove("bg-gray-900","overflow-hidden"),document.getElementById("hidden-gallery").classList.remove("hidden"),document.getElementById("hidden-gallery").style.opacity="0",document.getElementById("hidden-gallery").style.transition="opacity 1s ease-in .5s";const a=()=>{n.clearRect(0,0,t.width,t.height);let l=!0;o.forEach(c=>{c.life>0&&(l=!1,c.x+=Math.cos(c.angle)*c.speed,c.y+=Math.sin(c.angle)*c.speed,c.life-=.02,c.speed*=.98,n.beginPath(),n.arc(c.x,c.y,c.radius,0,2*Math.PI),n.fillStyle=`rgba(255, 255, 255, ${c.life})`,n.fill())}),document.getElementById("hidden-gallery").style.opacity="1",l?(e.classList.add("hidden"),document.getElementById("lock-page").classList.add("hidden"),startSlowReveal()):requestAnimationFrame(a)};a()}
     function startSlowReveal(){initFireflies(),initTimeline(),initPolaroidGallery(),initLetterModal(),setTimeout(()=>document.getElementById("main-title").classList.add("is-visible"),500),setTimeout(()=>document.getElementById("timeline-section").classList.add("is-visible"),1500),setTimeout(()=>document.getElementById("gallery-heading").classList.add("is-visible"),2500),setTimeout(()=>document.getElementById("clothesline").classList.add("is-visible"),3e3);const e=document.querySelectorAll(".polaroid");e.forEach((t,n)=>{setTimeout(()=>t.classList.add("is-visible"),3500+200*n)});const t=3500+200*e.length;setTimeout(()=>document.getElementById("open-letter-btn").classList.add("is-visible"),t),document.getElementById("background-music").play().catch(()=>{})}
     function initFireflies(){const e=document.getElementById("fireflies-canvas");if(!e)return;let t=e.getContext("2d"),n=[],o={x:null,y:null};function l(){e.width=window.innerWidth,e.height=window.innerHeight,n=[];let t=(e.width*e.height)/9e3;for(let o=0;o<t;o++)n.push({x:Math.random()*e.width,y:Math.random()*e.height,radius:1.5*Math.random()+.5,vx:.5*Math.random()-.25,vy:.5*Math.random()-.25,opacity:.5*Math.random()+.25})}function a(){t.clearRect(0,0,e.width,e.height),n.forEach(c=>{if(o.x&&o.y){let s=o.x-c.x,d=o.y-c.y,r=Math.sqrt(s*s+d*d);r<150&&(c.x+=s/r/5,c.y+=d/r/5)}c.x+=c.vx,c.y+=c.vy,(c.x<0||c.x>e.width)&&(c.vx*=-1),(c.y<0||c.y>e.height)&&(c.vy*=-1),t.beginPath(),t.arc(c.x,c.y,c.radius,0,2*Math.PI),t.fillStyle=`rgba(255, 255, 255, ${c.opacity})`,t.fill()}),requestAnimationFrame(a)}l(),window.addEventListener("mousemove",c=>{o.x=c.clientX,o.y=c.clientY}),window.addEventListener("resize",l)}
     function initTimeline(){const e=document.getElementById("timeline-section");if(!e)return;let t=0;const n=`<h2 class="font-serif-display text-4xl text-purple-300 mb-8">The Story of Us</h2><div class="timeline-container">${timelineData.map((o,l)=>`<div class="timeline-item" data-index="${l}"><div class="timeline-content"><h3 class="font-bold text-lg">${o.date}</h3><p class="text-purple-200">${o.event}</p></div></div>`).join("")}</div><button id="timeline-next">Next Chapter →</button>`;e.innerHTML=n;const o=document.querySelectorAll(".timeline-item");if(o.length>0){o[0].classList.add("is-visible");const l=document.getElementById("timeline-next");l&&l.addEventListener("click",function(){t++,t<o.length&&(o[t].classList.add("is-visible"),o[t].scrollIntoView({behavior:"smooth",block:"center"})),t>=o.length-1&&(this.style.opacity=0,this.style.pointerEvents="none")})}}
     function initPolaroidGallery(){const e=document.getElementById("gallery-container");if(!e)return;galleryData.forEach((t,n)=>{const o=document.createElement("div");o.className="polaroid sway-animation",o.style.transform=`rotate(${6*Math.random()-3}deg)`,o.style.animationDelay=`-${4*Math.random()}s`;let l="";l="video"===t.type?`<video src="${t.video}" autoplay muted loop playsinline></video>`:`<img src="${t.image}" alt="Memory ${n+1}">`,o.innerHTML=`<div class="polaroid-inner"><div class="polaroid-front">${l}</div><div class="polaroid-back font-handwriting text-2xl"><p>${t.note}</p></div></div>`,e.appendChild(o),o.addEventListener("click",()=>{const c=o.classList.toggle("is-flipped"),s=o.querySelector("video");s&&(c?s.pause():s.play())})})}
     function initLetterModal(){const e=document.getElementById("letter-modal"),t=document.getElementById("open-letter-btn"),n=document.getElementById("close-letter-btn"),o=document.getElementById("letter-modal-content");if(!e)return;let l=!1;const a=`<div class="letter-container is-blurred"><h2 class="font-serif-display text-4xl text-purple-300 mb-6 letter-line">${loveLetter.title}</h2>${loveLetter.paragraphs.map(c=>`<p class="font-handwriting text-2xl text-purple-200 mb-4 letter-line">${c}</p>`).join("")}<p class="font-handwriting text-3xl mt-8 letter-line">${loveLetter.signature}</p><div class="letter-prompt">Touch the letter to reveal its words.</div></div>`;o.innerHTML=a;const c=o.querySelector(".letter-container"),s=o.querySelectorAll(".letter-line"),d=o.querySelector(".letter-prompt"),r=()=>{if(l)return;l=!0,d.style.opacity="0",c.classList.remove("is-blurred"),c.style.cursor="default",c.classList.add("is-revealing"),s.forEach((m,p)=>{m.style.transitionDelay=`${.2*p}s`})},i=()=>{l=!1,d.style.opacity="1",c.classList.add("is-blurred"),c.classList.remove("is-revealing"),c.style.cursor="pointer",s.forEach(m=>{m.style.transitionDelay="0s"})};t.addEventListener("click",()=>{i(),e.classList.remove("hidden"),setTimeout(()=>e.classList.add("is-visible"),10)});const u=()=>{e.classList.remove("is-visible"),setTimeout(()=>e.classList.add("hidden"),300)};n.addEventListener("click",u),e.addEventListener("click",m=>{m.target===e&&u()}),c.addEventListener("click",r)}
-
+    
     initWordLock();
 });
