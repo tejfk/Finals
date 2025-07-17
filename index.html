@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Secret Just For You</title>
+    <title>Mirilin Bayot</title>
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E91E63'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
     
@@ -16,12 +16,12 @@
 </head>
 <body class="bg-gray-900 overflow-hidden">
 
-    <!-- ⭐ UPDATED: PHASE 1 now contains a hidden input field -->
-    <main id="lock-page" class="relative w-full h-screen cursor-pointer">
+    <!-- PHASE 1: WHISPERED WORD LOCK -->
+    <main id="lock-page" class="relative w-full h-screen">
         <div class="starry-background"></div>
         <div id="word-lock-instructions" class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 pointer-events-none transition-opacity duration-1000">
             <h1 class="font-serif-display text-4xl md:text-5xl mb-4 animate-pulse">Whisper the secret word.</h1>
-            <p class="text-lg text-gray-300">Tap here to begin.</p>
+            <p class="text-lg text-gray-300">Tap to begin.</p>
         </div>
         <div id="word-display" class="absolute inset-0 flex items-center justify-center text-5xl md:text-8xl font-serif-display text-white tracking-widest pointer-events-none"></div>
         
@@ -38,7 +38,7 @@
     <main id="hidden-gallery" class="hidden min-h-screen w-full relative overflow-y-auto">
         <canvas id="fireflies-canvas"></canvas>
         <audio id="background-music" loop>
-            <source src="./assets/audio/someday.mp3" type="audio/mpeg">
+            <source src="./someday.mp3" type="audio/mpeg">
         </audio>
 
         <div class="relative z-20 container mx-auto p-6 md:p-12 text-center">
