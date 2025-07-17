@@ -15,18 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const galleryData = [
-        { type: 'image', image: 'https://images.unsplash.com/photo-1502602898657-3e91760c0341?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600', note: "The city where it all began." },
-        { type: 'image', image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600', note: "On top of the world with you." },
-        { type: 'video', video: './assets/video/vid1.mp4', note: "Our little dance in the rain." },
-        { type: 'image', image: 'https://images.unsplash.com/photo-1507525428034-b723a9ce6890?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600', note: "I'd walk any beach with you." },
-        { type: 'image', image: 'https://images.unsplash.com/photo-1541882239643-c23f25b42c67?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600', note: "Cozy dates are the best dates." },
-        { type: 'video', video: 'https://i.imgur.com/7icd7i9.mp4', note: "Remember how hard we laughed?" },
-        { type: 'image', image: 'https://images.unsplash.com/photo-1515871204537-49a5ab69cc63?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600', note: "Happy to be stuck in the rain with you, any day." },
-        { type: 'image', image: 'https://images.unsplash.com/photo-1500759285222-3042347895c8?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600', note: "Simple days, perfect moments." },
-        { type: 'video', video: 'https://i.imgur.com/561tS14.mp4', note: "The moment the fireworks started." },
-        { type: 'image', image: 'https://images.unsplash.com/photo-1542444592-341857995115?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600', note: "You light up my world in every possible way." },
-        { type: 'video', video: 'https://i.imgur.com/P3m5o31.mp4', note: "Just being silly together." },
-        { type: 'image', image: 'https://images.unsplash.com/photo-1523979422953-fe78164860e4?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600', note: "To a lifetime more of adventures." },
+        { type: 'image', image: './assets/img/img6.jpg', note: "klaro kayng ibog kay atek2 picture." },
+        { type: 'image', image: './assets/img/img1.jpg', note: "samot klaro kay gipa ila2." },
+        { type: 'video', video: './assets/video/vid1.mp4', note: "bahay lambingan." },
+        { type: 'image', image: './assets/img/img2.jpg', note: "with Bob." },
+        { type: 'image', image: './assets/img/img3.jpg', note: "Cozy dates." },
+        { type: 'video', video: './assets/video/vid2.mp4', note: "Pawns and cuddles" },
+        { type: 'image', image: './assets/img/img4.jpg', note: "Sunod2 outfit." },
+        { type: 'image', image: './assets/img/img5.jpg', note: "abi nko bayot ka ari." },
+        { type: 'video', video: './assets/video/vid3.mp4', note: "Bahay lambingan part 2." },
+        { type: 'image', image: './assets/img/img7.jpg', note: "Merilin bayot." },
+        { type: 'video', video: './assets/video/vid4.mp4', note: "Live in typa shi." },
+        { type: 'image', image: './assets/img/img8.jpg', note: "goofy ass b." },
     ];
     
     const loveLetter = {
