@@ -1,5 +1,6 @@
 /* --- Base, Fonts, Word Lock, & Backgrounds --- */
 body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { scroll-behavior: smooth; }
 .font-serif-display { font-family: 'Playfair Display', serif; }
 .font-handwriting { font-family: 'Kalam', cursive; }
 #lock-page { background: #0c0a11; }
@@ -11,26 +12,13 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 #hidden-gallery > div { position: relative; z-index: 2; }
 .reveal-item{opacity:0;transition:opacity 1.5s ease-in-out}.reveal-item.is-visible{opacity:1}
 #stardust-canvas{position:absolute;top:0;left:0;width:100%;height:100%}
-
-/* --- ⭐ UPDATED: Style to make the input a fullscreen transparent layer --- */
-#hidden-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    border: none;
-    background: transparent;
-    color: transparent; /* Hides text selection/cursor on some devices */
-    caret-color: transparent; /* Modern way to hide the blinking cursor */
-    z-index: 10; /* Ensures it's on top of background but below instructions */
-}
+#hidden-input{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;border:none;background:transparent;color:transparent;caret-color:transparent;z-index:10}
 
 /* --- Responsive Timeline --- */
 .timeline-container{position:relative;max-width:600px;margin:auto}.timeline-container::after{content:'';position:absolute;width:4px;background-color:rgba(255,255,255,.2);top:0;bottom:0;left:50%;margin-left:-2px}.timeline-item{padding:10px 40px;position:relative;width:50%;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.timeline-item.is-visible{opacity:1;transform:translateY(0)}.timeline-left{left:0}.timeline-right{left:50%}.timeline-item::after{content:'♥';position:absolute;width:25px;height:25px;right:-14px;background-color:rgba(255,255,255,.8);color:#c084fc;font-size:14px;top:15px;border-radius:50%;z-index:1;text-align:center;line-height:25px}.timeline-right::after{left:-11px}.timeline-content{padding:20px;background:rgba(255,255,255,.05);border-radius:6px;text-align:left}
-#timeline-next{background:#c084fc;color:white;padding:10px 20px;border-radius:50px;font-weight:700;margin-top:2rem;transition:all .3s;box-shadow:0 4px 15px rgba(192,132,252,.4)}#timeline-next:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(192,132,252,.6)}
 @media screen and (max-width: 767px) {.timeline-container::after{left:31px}.timeline-item{width:100%;padding-left:70px;padding-right:25px}.timeline-left,.timeline-right{left:0}.timeline-left::after,.timeline-right::after{left:18px}}
+#scroll-to-gallery-btn{display:inline-block;margin-top:2rem;color:#c084fc;animation:pulse 2s infinite;transition:transform .3s}#scroll-to-gallery-btn:hover{transform:scale(1.1);animation-play-state:paused}
+@keyframes pulse{0%{transform:scale(.95)}70%{transform:scale(1.05)}100%{transform:scale(.95)}}
 
 /* --- Wrapping Polaroid Gallery --- */
 #clothesline { width: 95%; height: 3px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent); margin: 0 auto 5rem auto; }
@@ -52,3 +40,49 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 @media (min-width:768px){.letter-container{padding:2.5rem 3rem}}
 .letter-container.is-blurred{filter:blur(8px);-webkit-filter:blur(8px)}.letter-container .letter-line{opacity:0;transition:opacity .8s ease;display:block}.letter-container.is-revealing .letter-line{opacity:1}.letter-prompt{position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-style:italic;transition:opacity .5s}
 .letter-container h2{font-size:1.875rem;line-height:2.25rem}.letter-container p{font-size:1.25rem;line-height:1.75rem}
+
+/* --- ⭐ UPDATED: Bouquet Slide-In from Corner Animation --- */
+#bouquet-surprise.is-visible { opacity: 1; pointer-events: auto; }
+#bouquet-surprise {
+    /* This fullscreen container will have the dark overlay */
+    background-color: rgba(0,0,0,0.5);
+}
+#bouquet-image {
+    position: fixed; /* Position relative to the viewport */
+    bottom: 0;
+    right: 0;
+    width: 400px; /* A bit larger */
+    max-width: 70vw; /* Responsive constraint */
+    height: auto;
+    /* Start off-screen to the bottom-right and rotated */
+    transform: translate(100%, 100%) rotate(15deg); 
+    opacity: 0;
+    transition: transform 1.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 1.5s ease-out;
+}
+#bouquet-surprise.is-visible #bouquet-image {
+    /* Land perfectly at the bottom-right edge */
+    transform: translate(0, 0) rotate(0deg); 
+    opacity: 1;
+}
+#bouquet-message {
+    position: fixed; /* Position relative to the viewport */
+    bottom: 300px;
+    right: 370px; /* Positioned to the left of where the bouquet will land */
+    opacity: 0;
+    text-shadow: 0 2px 10px #000;
+    transition: opacity 0.8s ease-in 1.8s;
+    width: max-content;
+}
+@media (max-width: 767px) {
+    /* On mobile, center the message at the top */
+    #bouquet-message {
+        bottom: auto;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
+}
+#bouquet-surprise.is-visible #bouquet-message {
+    opacity: 1;
+}
